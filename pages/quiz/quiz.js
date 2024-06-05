@@ -45,7 +45,7 @@ function montarPergunta() {
             <div>
                 <p>Questão ${pergunta} de 10</p>
 
-                <h2>${quiz.questions[pergunta-1].question}</h2>
+                <h2>${alterarSinais(quiz.questions[pergunta-1].question)}</h2>
             </div>
             <div class="barra_progresso">
                 <div style="width: ${pergunta * 10}%"></div>
@@ -54,21 +54,21 @@ function montarPergunta() {
 
         <section class="alternativas">
             <form action="">
-                <label for="alternativa_a" id="correta">
+                <label for="alternativa_a">
                     <input type="radio" id="alternativa_a" name="alternativa">
 
                     <div>
                         <span>A</span>
-                        Hyper Trainer Marking Language
+                        ${alterarSinais(quiz.questions[pergunta-1].options[0])}
                     </div>
                 </label>
 
-                <label for="alternativa_b" id="errada">
+                <label for="alternativa_b">
                     <input type="radio" id="alternativa_b" name="alternativa">
 
                     <div>
                         <span>B</span>
-                        Hyper Text Marketing Language
+                        ${alterarSinais(quiz.questions[pergunta-1].options[1])}
                     </div>
                 </label>
 
@@ -77,7 +77,7 @@ function montarPergunta() {
 
                     <div>
                         <span>C</span>
-                        Hyper Text Markup Language
+                        ${alterarSinais(quiz.questions[pergunta-1].options[2])}
                     </div>
                 </label>
 
@@ -86,7 +86,7 @@ function montarPergunta() {
 
                     <div>
                         <span>D</span>
-                        Hyper Text Markup Leveler
+                        ${alterarSinais(quiz.questions[pergunta-1].options[3])}
                     </div>
                 </label>
             </form>
@@ -94,6 +94,10 @@ function montarPergunta() {
             <button>Enviar</button>
         </section>
     `
+}
+
+function alterarSinais(texto) {
+    return texto.replace(/</g, "&lt;").replace(/>/g, "&gtl;")
 }
 
 async function iniciar() {
